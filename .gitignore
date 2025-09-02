@@ -1,0 +1,10 @@
+
+utils/
+*.pth
+*.onnx
+mdraModel/
+model/process_dict.py
+.idea/
+__pycache__/
+*.pkl
+*.log

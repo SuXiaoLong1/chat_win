@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EEG与音频数据处理平台</title>
+  <link rel="stylesheet" href="static/css/get-data.css">
+  <script src="static/js/get-data.js"></script>
+</head>
+<body>
+  <h1>数据收集与处理平台</h1>
+  
+  <div class="container">
+    <!-- EEG信号模块 -->
+    <div class="section">
+      <h2>EEG信号处理</h2>
+      <div class="upload-container">
+        <label for="eeg-upload">上传EEG原始数据文件：</label>
+        <input type="file" id="eeg-upload" class="upload-input" accept=".edf,.bdf">
+        <button onclick="uploadData('eeg')">上传并加载EEG数据</button>
+        <button onclick="get_hardware_data('eeg')">使用脑电设备读取数据</button>
+        <p class="upload-tip">支持格式：.edf（推荐）、.bdf | 建议文件大小不超过100MB</p>
+        <div id="eeg-status" class="status-message"></div>
+        <!-- <div id="hardware" class=""></div> -->
+      </div>
+      
+      <div class="controls">
+        <button onclick="useSampleData('eeg')">使用示例EEG数据</button>
+        <button onclick="preprocessData('eeg')" class="secondary">处理EEG数据</button>
+      </div>
+      
+      <div class="image-container" id="eeg-image">
+        <img src="" alt="EEG数据可视化" id="eeg-img-src" width="600">
+      </div>
+    </div>
+
+    <!-- 音频信号模块 --> 
+    <div class="section">
+      <h2>音频信号处理</h2>
+      <div class="upload-container">
+        <label for="audio-upload">上传音频原始数据文件：</label>
+        <input type="file" id="audio-upload" class="upload-input" accept=".wav">
+        <button onclick="uploadData('audio')">上传并加载音频数据</button>
+        <p class="upload-tip">支持格式：.wav（推荐） | 建议文件时长不超过5分钟</p>
+        <div id="audio-status" class="status-message"></div>
+      </div>
+      
+      <div class="controls">
+        <button onclick="useSampleData('audio')">使用示例音频数据</button>
+        <button onclick="preprocessData('audio')" class="secondary">处理音频数据</button>
+      </div>
+      
+      <div class="image-container" id="audio-image">
+        <img src="" alt="音频数据可视化" id="audio-img-src" width="600">
+      </div>
+    </div>
+    
+    <!-- 患者自述模块 -->
+    <div class="section">
+      <h2>患者文本数据</h2>
+      <textarea id="patient-text" placeholder="请输入患者自述文本内容...例如：最近一个月以来，我经常感到情绪低落，对任何事情都提不起兴趣，晚上睡眠质量很差，常常整夜失眠..."></textarea>
+      
+      <div class="upload-container">
+        <label for="text-upload">或上传文本文件：</label>
+        <input type="file" id="text-upload" class="upload-input" accept=".txt">
+        <button onclick="uploadData('text')">上传文本文件</button>
+        <p class="upload-tip">支持格式：.txt（UTF-8编码） | 建议文本长度50-500字</p>
+        <div id="text-status" class="status-message"></div>
+      </div>
+      
+      <button onclick="generateWordCloud()">生成文本词云分析</button>
+      
+      <div class="image-container" id="text-image">
+        <img src="" alt="文本词云图" id="text-img-src" width="600">
+      </div>
+    </div>
+
+    <!-- 检测与结果模块 -->
+    <div class="section">
+      <h2>抑郁症检测分析</h2>
+      <button onclick="runDetection()">开始综合检测分析</button>
+      <button onclick="window.location.href='/';" class="secondary">返回主页面</button>
+      
+      <div id="result" class="processing">
+        请上传并处理所有数据后进行检测分析
+      </div>
+    </div>
+  </div>
+
+
+    
+
+</body>
+</html>
+    
