@@ -2,7 +2,7 @@
 utils/
 *.pth
 *.onnx
-mdraModel/
+mdra*
 model/process_dict.py
 .idea/
 __pycache__/
